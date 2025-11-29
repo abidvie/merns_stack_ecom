@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const authrouter = require('./routes/auth/authroute');
-
+const adminproductrouter = require('./routes/admin_routes/products_route');
 const app = express();
 
 mongoose.connect('mongodb+srv://sarkerdipto2055_db_user:abid1234@cluster0.s80w84p.mongodb.net/')
@@ -27,6 +27,7 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(cookieParser());
 app.use('/api/auth', authrouter);
+app.use('/api/admin/products', adminproductrouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
