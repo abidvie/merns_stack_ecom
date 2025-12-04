@@ -188,9 +188,10 @@ const adminProductSlice = createSlice({
         state.isLoading = true;
       })
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
-        console.log('fetchAllProducts on extra reducer payload:', action.payload);
+        console.log('fetchAllProducts on extra reducer payload:', action.payload.data);
         state.isLoading = false;
-        state.products = action.payload.data;
+        state.products = action.payload.data || "ksjdhf"; // Handle both cases
+        console.log("state.products after fetch:", state.products);
       })
       .addCase(fetchAllProducts.rejected, (state, action) => {
         
