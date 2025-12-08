@@ -109,7 +109,7 @@ function ProductAdminCard({ product, onEdit, onDelete }) {
         <Button 
           variant="outlined" 
           color="primary" 
-          onClick={() => onEdit(product._id)} 
+          onClick={() => onEdit(product._id,product)} 
           startIcon={<AiOutlineEdit />}
           sx={{ fontSize: '0.85rem', padding: '5px 10px' }}
         >

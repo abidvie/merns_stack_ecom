@@ -162,6 +162,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MdDashboard, MdOutlineBorderColor, MdOutlineProductionQuantityLimits, MdAdminPanelSettings } from "react-icons/md";
+import { logoutuser } from "@/store/auth-slice";
+import { useDispatch } from "react-redux";
+import { toast } from "sonner";
 const adminsidebarmenuitems = [
   { id: "dashboard", label: "Dashboard", link: "/admin/dashboard", icon: <MdDashboard /> },
   { id: "products", label: "Products", link: "/admin/products", icon: <MdOutlineBorderColor /> },
@@ -189,6 +192,33 @@ const MenuItems = () => {
 const AdminHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+const [message, setMessage] = useState("");
+
+
+  const handleLogout=async()=>{
+        try {
+          const result = await dispatch(logoutuser());
+           console.log('Response log in logoutpage:', result); // Log the full result
+          
+          if (result.payload.success) {
+              setMessage(result.payload.message);
+          
+          
+              toast(result.payload.message);
+            navigate('/auth/login'); 
+  
+          } else  {
+            toast(result.payload.message);
+              setMessage(result.error.message);
+          }
+      } catch (error) {
+          // console.error('Error:', error);
+           
+         setMessage('Log out  failed');
+      }    
+       
+  }
 
   return (
     <header className="flex justify-between items-center p-4 bg-gray-800 text-white shadow-md gap-5">
@@ -237,7 +267,7 @@ const AdminHeader = () => {
           className="w-10 h-10 rounded-full"
         />
         <button
-          onClick={() => console.log("Logging out...")} // Placeholder for logout functionality
+          onClick={handleLogout} // Placeholder for logout functionality
           className="bg-red-500 px-4 py-2 rounded-md text-white hover:bg-red-600"
         >
           Logout

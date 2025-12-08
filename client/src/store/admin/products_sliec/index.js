@@ -126,6 +126,7 @@ export const addNewProducts = createAsyncThunk(
   }
 );
 
+
 // Fetch all products
 export const fetchAllProducts = createAsyncThunk(
   'products/fetchAllProducts',
@@ -140,10 +141,11 @@ export const fetchAllProducts = createAsyncThunk(
 
 // Edit a product
 export const editAProduct = createAsyncThunk(
-  'products/editProduct',
-  async ({ id, formData }) => {
+  'products/editproduct',
+  async ({ id, formData } ) => {
     const response = await axios.put(
-      `http://localhost:5000/api/admin/products/editProduct/${id}`,
+      // `http://localhost:5000/api/admin/products/editproduct/${id}`,
+       `http://localhost:5000/api/admin/products/editproduct/${id}`,
       formData,
       {
         headers: {
@@ -215,6 +217,7 @@ const adminProductSlice = createSlice({
       })
       .addCase(editAProduct.fulfilled, (state, action) => {
         state.isLoading = false;
+        console.log("Edited product payload:", action.payload);
         // Optionally update the product in the list
         const index = state.products.findIndex(
           (product) => product._id === action.payload._id

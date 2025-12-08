@@ -75,6 +75,7 @@ const fetchallproducts = async (req, res) => {
 const editproduct = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log("Editing product with ID:", id);
     const {
       title,
       image,
