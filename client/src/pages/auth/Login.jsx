@@ -35,7 +35,7 @@ const navigate = useNavigate();
 
       try {
         const result = await dispatch(LoginUser(formData));
-        // console.log('Response log in abid:', result); // Log the full result
+          console.log('Response log in abid:', result); // Log the full result
         
         if (result.payload.success) {
             setMessage(result.payload.message);

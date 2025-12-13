@@ -71,6 +71,8 @@ const initialState = {
   isLoading: true,
   user: null,
   error: null, // Added error state
+  username:null,
+  email:null
 };
 
 export const registerUser = createAsyncThunk(
@@ -125,17 +127,7 @@ export const checkauth = createAsyncThunk(
 });
 
 
-// export const logoutuser = createAsyncThunk(
-//   "auth/logout",
-//   async () => {
-//     const response = await axios.post(
-//       "http://localhost:5000/api/auth/logout",
-//       {},
-//       { withCredentials: true }
-//     );
-//     return response.data;
-//   }
-// ); 
+
 export const logoutuser = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
@@ -189,11 +181,12 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(LoginUser.fulfilled, (state, action) => {
-        console.log('LoginUser.fulfilled action.payload:', action.payload.user);
+       // console.log('LoginUser.fulfilled action.payload:', action.payload.user);
         state.isLoading = false;
         state.user = action.payload.user;
         state.isAuthenticated = action.payload.success;
         state.error = null;
+        state.username =  action.payload.user.name;
       })
       .addCase(LoginUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -208,11 +201,13 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(checkauth.fulfilled, (state, action) => {
-        // console.log('LoginUser.fulfilled action.payload:', action.payload.user);
+         console.log('LoginUser.fulfilled action.payload in the auth part:', action.payload.user);
         state.isLoading = false;
         state.user = action.payload.user;
         state.isAuthenticated = action.payload.success;
         state.error = null;
+        state.username =  action.payload.user.name;
+        state.email =  action.payload.user.email;
       })
       .addCase(checkauth.rejected, (state, action) => {
         state.isLoading = false;
@@ -229,7 +224,7 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(logoutuser.fulfilled, (state, action) => {
-        // console.log('LoginUser.fulfilled action.payload:', action.payload.user);
+        //  console.log('LoginUser.fulfilled action.payload:', action.payload.user);
         state.isLoading = false;
         state.user = action.payload.user;
         state.isAuthenticated = !action.payload.success;

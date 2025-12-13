@@ -2,7 +2,7 @@ function ShoppingHome(){
 
 
     return (
-        <div>Shopping Home</div>
+        <div className="h-screen overflow-auto">Shopping Home</div>
     )
 }
 
