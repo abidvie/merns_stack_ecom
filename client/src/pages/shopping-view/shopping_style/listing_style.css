@@ -1,0 +1,10 @@
+.listing_container{
+  padding: 15px 20px;
+   display: grid;
+   background: red;
+  grid-template-columns: 30% 70%;
+  gap: 20px;
+  padding: 20px; 
+
+
+}

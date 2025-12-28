@@ -1247,6 +1247,9 @@ function AdminProducts() {
               <MenuItem value="electronics">Electronics</MenuItem>
               <MenuItem value="clothing">Clothing</MenuItem>
               <MenuItem value="home">Home</MenuItem>
+              <MenuItem value="men">Men</MenuItem>
+              <MenuItem value="women">Women</MenuItem>
+              <MenuItem value="kids">Kids</MenuItem>
             </Select>
           </FormControl>
 

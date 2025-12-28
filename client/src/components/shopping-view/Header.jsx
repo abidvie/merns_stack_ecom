@@ -139,24 +139,6 @@ const handleLogout=async()=>{
                         <button onClick={handleLogout} className="cursor-auto logout-btn text-blue-500 hover:underline text-sm mt-10.5 border-t  pt-2">Log Out</button>
                      
                     </div>
-
-                    {/* <div className="mt-4">
-                      <p className="text-sm text-gray-700">Other Chrome profiles</p>
-                      <p className="text-sm text-blue-500 cursor-pointer">
-                        ABID SARKER DIPTO (student.cuet.ac.bd)
-                      </p>
-                      <div className="flex space-x-4 mt-2">
-                        <button className="text-blue-500 text-sm hover:underline">
-                          Add Chrome profile
-                        </button>
-                        <button className="text-blue-500 text-sm hover:underline">
-                          Open Guest profile
-                        </button>
-                        <button className="text-blue-500 text-sm hover:underline">
-                          Manage Chrome profiles
-                        </button>
-                      </div>
-                    </div> */}
                   </div>
                 </div>
               </div>
@@ -164,9 +146,10 @@ const handleLogout=async()=>{
           </div>
         </div>
 
+
         <div className="mega_menu_container p-2 cursor-pointer text-gray-800 hover:text-orange-500">
           About
-          <div className="mega_drop">
+          <div className="mega_drop ">
             <div className="mega_grid">
               <div className="mega_child_div">
                 Links

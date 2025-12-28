@@ -37,109 +37,94 @@ visibility: hidden;
     cursor: pointer;
 } */
 
-
-
-
-
-
-
-/* Mega Drop */
-.mega_drop {
-    position: absolute;
-    transform: translateX(-58%);
-    visibility: hidden;
-    opacity: 0;
-   /* background-color: red; */
-    transition: visibility 0s, opacity 0.3s ease-in-out;
-    /* background-color: #fff; */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
-    border-radius: 8px;
-    padding: 1rem;
-}
-
-/* Mega Grid */
 .mega_grid {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Makes each grid item take equal space */
-    gap: 1.5rem;
-    padding: 1rem;
-    position: relative;
-    top: 2rem;
-    background-color: #f9f9f9;
-    justify-content: center;    
-    border-radius: 10px;
-    /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); */
-    transition: box-shadow 0.3s ease;
-    
-    
+  width: 100%;
+  height: 100%;
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1rem;
+  position: relative;
+  top: 2rem;
+  background-color: red;
+  justify-content: center;
+  border-radius: 10px;
+
+  transition: box-shadow 0.3s ease;
 }
 
+.mega_drop {
+  position: absolute;
+  transform: translateX(-58%);
 
+  visibility: hidden;
+  opacity: 0;
+
+  transition: visibility 0s, opacity 0.3s ease-in-out;
+
+  border-radius: 8px;
+  padding: 1rem;
+}
 
 .mega_grid:hover {
-     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 .mega_child_div {
-    position: relative;
-    left: 4.5%;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1rem;
-    transition: border 0.3s ease;
-   justify-items: center;
+  position: relative;
+  left: 4.5%;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: border 0.3s ease;
+  justify-items: center;
 }
 
 .mega_child_div:hover {
-    border-color: #007BFF; 
+  border-color: #007bff;
 }
 
-
-
-
-
-/* Mega Menu Hover */
-.mega_menu_container:hover .mega_drop {
+/* .mega_menu_container:hover  .mega_grid  .mega_drop{
     visibility: visible;
     opacity: 1;
-    /* top: 3rem; Position it slightly below the menu */
+  
+} */
+.mega_menu_container:hover .mega_drop  {
+  visibility: visible;
+  opacity: 1;
+  z-index: 200;
 }
 
-/* Mega Child Div List */
 .mega_child_div ul li {
-    list-style: none;
-    padding: .5rem 0;
-    cursor: pointer;
-    font-size: 1rem;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
+  list-style: none;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .mega_child_div ul li:hover {
-    color: #007BFF; /* Change text color on hover */
 }
 
-/* Add some padding and border-radius for list items */
 .mega_child_div ul li {
-    padding: 0.5rem;
-    border-radius: 5px;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
 .mega_child_div ul li:hover {
-    background-color: #f0f0f0; 
+  background-color: #f0f0f0;
 }
 
-/* Make the menu more responsive */
 @media (max-width: 768px) {
-    .mega_grid {
-        grid-template-columns: 1fr; /* Stack the grid items on small screens */
-        gap: 1rem;
-    }
+  .mega_grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 
-    .mega_drop {
-        top: 0; /* Align the dropdown properly on smaller screens */
-    }
+  .mega_drop {
+    top: 0;
+  }
 }
