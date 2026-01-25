@@ -12,40 +12,6 @@ const initialState = {
   error: null,
 };
 
-// Add new products
-// export const addNewProducts = createAsyncThunk(
-//   'products/addProducts',
-//   async (formData) => {
-//     const response = await axios.post(
-//       'http://localhost:5000/api/admin/products/addproducts',
-//       formData,
-//       {
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       }
-//     );
-//     console.log('addNewProducts:', response.data);
-//     return response.data;
-//   }
-// );
-
-
-// Fetch all products
-// export const fetch_All_filter_Products = createAsyncThunk(
-//   'products/fetchAllfilterProducts',
-//   async (searchQuery) => {
-//     console.log("searchQuery in fetchallfilterproducts",searchQuery);
-  
-//     const response = await axios.get(
-//           `http://localhost:5000/api/shop/listing/fetchallfilterproducts?query=${searchQuery}`,
-          
-//     );
-//     console.log('fetchAll filtered Products:', response.data);
-//     return response.data;
-//   }
-// );
-
 
 export const fetch_All_filter_Products = createAsyncThunk(
   'products/fetchAllfilterProducts',
@@ -68,36 +34,6 @@ export const fetch_All_filter_Products = createAsyncThunk(
 );
 
 
-// Edit a product
-// export const editAProduct = createAsyncThunk(
-//   'products/editproduct',
-//   async ({ id, formData } ) => {
-//     const response = await axios.put(
-//       // `http://localhost:5000/api/admin/products/editproduct/${id}`,
-//        `http://localhost:5000/api/admin/products/editproduct/${id}`,
-//       formData,
-//       {
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       }
-//     );
-//     console.log('editProduct:', response.data);
-//     return response.data;
-//   }
-// );
-
-// Delete a product
-// export const deleteProduct = createAsyncThunk(
-//   'products/deleteProduct',
-//   async (id) => {
-//     const response = await axios.delete(
-//       `http://localhost:5000/api/admin/products/deleteProduct/${id}`
-//     );
-//     console.log('deleteProduct:', response.data);
-//     return response.data;
-//   }
-// );
 
 const clientProductSlice = createSlice({
   name: 'clientProductSlice', // Corrected name of the slice

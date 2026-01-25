@@ -134,30 +134,48 @@ const logout=(req,res)=>{
 }
 
 
-const authMiddleware=async(req,res,next)=>{
-    const token=req.cookies.token;
-    if(!token){
-        return res.status(401).json({
-            success:false,
-            message:"unauthorized user"
-        });
-    }  
-    try{
-        const decoded=jwt.verify(token,'client_secret_key');
-        console.log('Decoded token:', decoded);
-        req.user=decoded;
-        next();
 
-    }
-    catch(error){
-        return res.status(401).json({
-            success:false,
-            message:"unauthorized user"
-        });
-    }
-}
+const authMiddleware = async (req, res, next) => {
+  const token = req.cookies.token;
 
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      message: "Unauthorized user",
+    });
+  }
 
+  try {
+    const decoded = jwt.verify(token, "client_secret_key");
+
+    /*
+      decoded contains:
+      {
+        id,
+        email,
+        role,
+        name,
+        iat,
+        exp
+      }
+    */
+
+    // ✅ normalize user object
+    req.user = {
+      id: decoded.id,
+      email: decoded.email,
+      role: decoded.role,
+      name: decoded.name,
+    };
+
+    next();
+  } catch (error) {
+    return res.status(401).json({
+      success: false,
+      message: "Unauthorized user",
+    });
+  }
+};
 
 
 

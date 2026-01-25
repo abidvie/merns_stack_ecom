@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import "./shopping_style/home_style.css";
+
 import { FaAward, FaRegNewspaper, FaTag } from "react-icons/fa"; // Importing React icons for each category
 import {
   FaCheckCircle,
@@ -19,6 +20,8 @@ import {
   editAProduct,
   fetchAllProducts,
 } from "@/store/admin/products_sliec";
+
+
 import ShoppingProductCard from "@/components/shopping-view/ShoppingProducCard";
 function ShoppingHome() {
   const dispatch = useDispatch();
@@ -55,48 +58,7 @@ const navigate = useNavigate();
         className=" w-full  bg-amber-300"
         onMouseLeave={() => setActiveDropdown(null)}
       >
-        {/* <div className="header_below_section">
-          <div className="div1">
-            <span
-              onMouseEnter={() => setActiveDropdown("all-categories")}
-              className="mr-6 element"
-            >
-              All Categories
-            </span>
-            <span
-              onMouseEnter={() => setActiveDropdown("featured-selections")}
-              className="mr-6 element"
-            >
-              Featured Selections
-            </span>
-            <span
-              onMouseEnter={() => setActiveDropdown("order-protection")}
-              className="mr-6 element"
-            >
-              Order Protection
-            </span>
-          </div>
-          <div className="div2">
-            <span
-              onMouseEnter={() => setActiveDropdown("buyer-central")}
-              className="mr-6 element"
-            >
-              Buyer Central
-            </span>
-            <span
-              onMouseEnter={() => setActiveDropdown("help-central")}
-              className="mr-6 element"
-            >
-              Help Central
-            </span>
-            <span
-              onMouseEnter={() => setActiveDropdown("app-extensions")}
-              className="mr-6 element"
-            >
-              App & Extensions
-            </span>
-          </div>
-        </div> */}
+     
 
 
 
@@ -256,7 +218,9 @@ const navigate = useNavigate();
             {/* <ShoppingProductCard product={products}/> */}
             <div className="product-grid grid grid-cols-3">
               {products.map((product) => (
-                <ShoppingProductCard key={product.id} product={product} />
+                // console.log(product._id),
+              // <Link key={product._id} to={`/shop/product_details/${product._id}`} ><ShoppingProductCard product={product} /></Link>
+              <ShoppingProductCard product={product} />
               ))}
             </div>
           </div>

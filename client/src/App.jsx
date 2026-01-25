@@ -17,6 +17,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { checkauth } from "./store/auth-slice";
 import Logout from "./pages/auth/Logout";
+import ProductDetails from "./pages/shopping-view/ProductDetails";
+import Cart_page from "./pages/shopping-view/Cart_page";
+
+// import { Car } from "lucide-react";
 
 function App() {
 
@@ -33,7 +37,7 @@ function App() {
  
  if(isLoading){
   return <div className="flex items-center justify-center h-screen">
-  <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900">LOADING</div>
+  <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
 </div>
  }
 
@@ -75,6 +79,8 @@ function App() {
           }
         >
           <Route path="home" element={<ShoppingHome />} />
+          <Route path="cart" element={<Cart_page/>} />
+          <Route path="product_details/:id" element={<ProductDetails />} /> 
           <Route path="listing" element={<ShoppingListing />} />
           <Route path="checkout" element={<ShoppingCheckOut />} />
           <Route path="account" element={<ShoppingAccount />} />

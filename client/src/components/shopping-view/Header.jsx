@@ -10,7 +10,9 @@ import { useSelector } from "react-redux";
 import { useDispatch } from 'react-redux';
 import { toast } from "sonner"
 import { logoutuser } from '@/store/auth-slice';
+import { useNavigate } from "react-router-dom";
 function ShoppingHeader() {
+   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const { isLoading, error, isAuthenticated, username, email } = useSelector(
     (state) => state.auth
@@ -75,7 +77,9 @@ const handleLogout=async()=>{
           <BsCart3
             size={24}
             className="text-gray-800 cursor-pointer hover:text-orange-500"
+            onClick={()=>{navigate("/shop/cart")}}
           />
+          
         </div>
 
         {/* User Profile Icon */}

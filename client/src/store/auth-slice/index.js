@@ -121,7 +121,7 @@ export const checkauth = createAsyncThunk(
         },  
        }
     );
-    // console.log('checkauth response:', response.data);
+     console.log('checkauth response:', response.data);
     return response.data;
 
 });

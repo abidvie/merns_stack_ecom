@@ -246,7 +246,7 @@ transform: translateX(-50%);
 .container{
   padding: 15px 20px;
    /* display: grid; */
-   background: red;
+  
   /* grid-template-columns: 30% 70%; */
   /* gap: 20px; optional gap between columns */
   padding: 20px; /* optional padding around the container */

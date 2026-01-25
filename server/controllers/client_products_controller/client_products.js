@@ -198,9 +198,9 @@ const { Product } = require('../../models/Products')
 
 const fetch_all_filtered_products = async (req, res) => {
   const { query, categories, brands } = req.query; // Access query parameters from the URL
-  console.log("Search Query in Backend:", query);
-  console.log("Categories in Backend:", categories);
-  console.log("Brands in Backend:", brands);
+  // console.log("Search Query in Backend:", query);
+  // console.log("Categories in Backend:", categories);
+  // console.log("Brands in Backend:", brands);
 
   try {
     let filterCriteria = {}; // Initialize filter criteria
@@ -215,24 +215,25 @@ const fetch_all_filtered_products = async (req, res) => {
 
     // Optionally filter by category if it exists and is not null or empty
     if (categories && categories !== 'null' && categories.trim() !== '') {
-      console.log("Applying category filter:", categories);
+      // console.log("Applying category filter:", categories);
       filterCriteria.category = { $regex: categories, $options: 'i' }; // Case-insensitive search for category
     }
 
     // Optionally filter by brand if it exists and is not null or empty
     if (brands && brands !== 'null' && brands.trim() !== '') {
-      console.log("Applying brand filter:", brands);
+      // console.log("Applying brand filter:", brands);
       filterCriteria.brand = { $regex: brands, $options: 'i' }; // Case-insensitive search for brand
     }
 
     
-    console.log("Constructed filterCriteria:", filterCriteria);
+
+    // console.log("Constructed filterCriteria:", filterCriteria);
 
     
     const listofproducts = await Product.find(filterCriteria);
 
     if (listofproducts.length === 0) {
-      console.log("No products found with the given filters.");
+      // console.log("No products found with the given filters.");
     }
 
     res.status(200).json({
@@ -247,8 +248,25 @@ const fetch_all_filtered_products = async (req, res) => {
 };
 
 
+const product_details=async(req,res)=>{
+  const {id}=req.params;
+  console.log(id)
+  try {
+    const product=await Product.findById(id);
+    res.status(200).json({
+      success: true,
+      message: "product details fetched successfully",
+      data: product,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: "Server error" });
+  } 
+}
+
 
 module.exports = {
   fetch_all_filtered_products,
+  product_details,
   
 };
